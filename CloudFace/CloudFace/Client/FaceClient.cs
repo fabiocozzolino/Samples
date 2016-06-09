@@ -31,6 +31,17 @@ namespace CloudFace.Client
 
 			return JsonConvert.DeserializeObject<Face[]> (jsonResponse);
 		}
+
+		public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> DetectWithClientAsync(Stream imageStream)
+		{
+			var client = new Microsoft.ProjectOxford.Face.FaceServiceClient (SubscriptionKeys.FaceId);
+			return await client.DetectAsync(imageStream, 
+				returnFaceId:true, 
+				returnFaceLandmarks:true, 
+				returnFaceAttributes: new [] { 
+				Microsoft.ProjectOxford.Face.FaceAttributeType.Age,
+				Microsoft.ProjectOxford.Face.FaceAttributeType.Gender});
+		}
 	}
 
 
