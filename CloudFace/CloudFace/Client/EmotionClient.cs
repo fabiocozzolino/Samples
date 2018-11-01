@@ -15,7 +15,7 @@ namespace CloudFace.Client
 
 		public async Task<EmotionFace[]> RecognizeAsync(Stream stream)
 		{
-			var url = $"https://api.projectoxford.ai/emotion/v1.0/recognize";
+			var url = $"https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize";
 
 			var requestContent = new StreamContent (stream);
 			requestContent.Headers.Add ("Ocp-Apim-Subscription-Key", SubscriptionKeys.EmotionId);

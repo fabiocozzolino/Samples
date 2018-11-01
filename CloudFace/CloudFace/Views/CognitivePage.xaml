@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:converters="clr-namespace:CloudFace.Converters;assembly=CloudFace"
+		x:Class="CloudFace.Views.CognitivePage">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+		<Grid>
+			<AbsoluteLayout x:Name="bodyLayout" BackgroundColor="Fuchsia" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+				<Image Source="{Binding Image, Converter={StaticResource ByteArrayToImage}}" />
+			</AbsoluteLayout>
+			<Label Text="{Binding ImageDescription}" FontSize="30" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="End" >
+				<Label.GestureRecognizers>
+					<TapGestureRecognizer Tapped="Handle_Tapped" />
+				</Label.GestureRecognizers>
+			</Label>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

@@ -17,10 +17,11 @@ namespace CloudFace.Client
 		{
 			var returnFaceId = true;
 			var returnFaceLandmarks = true;
-			var returnFaceAttributes = "age,gender,smile,facialHair,headPose,glasses";
-			var url = $"https://api.projectoxford.ai/face/v1.0/detect?returnFaceId={returnFaceId}&returnFaceLandmarks={returnFaceLandmarks}&returnFaceAttributes={returnFaceAttributes}";
-
-			var requestContent = new StreamContent (stream);
+			var returnFaceAttributes = "age,gender,smile,facialHair,headPose,glasses,emotion";
+            //var url = $"https://api.projectoxford.ai/face/v1.0/detect?returnFaceId={returnFaceId}&returnFaceLandmarks={returnFaceLandmarks}&returnFaceAttributes={returnFaceAttributes}";
+            var url = $"https://westeurope.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId={returnFaceId}&returnFaceLandmarks={returnFaceLandmarks}&returnFaceAttributes={returnFaceAttributes}";
+        
+            var requestContent = new StreamContent (stream);
 			requestContent.Headers.Add ("Ocp-Apim-Subscription-Key", SubscriptionKeys.FaceId);
 			requestContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue ("application/octet-stream");
 			var client = new HttpClient ();
@@ -29,7 +30,7 @@ namespace CloudFace.Client
 			var responseContent = response.Content as StreamContent;
 			var jsonResponse = await responseContent.ReadAsStringAsync ();
 
-			return JsonConvert.DeserializeObject<Face[]> (jsonResponse);
+            return JsonConvert.DeserializeObject<Face[]> (jsonResponse);
 		}
 
 		public async Task<Microsoft.ProjectOxford.Face.Contract.Face[]> DetectWithClientAsync(Stream imageStream)
@@ -47,236 +48,248 @@ namespace CloudFace.Client
 
 	public class FaceRectangle
 	{
-		public int top { get; set; }
-		public int left { get; set; }
-		public int width { get; set; }
-		public int height { get; set; }
+		public int Top { get; set; }
+		public int Left { get; set; }
+		public int Width { get; set; }
+		public int Height { get; set; }
 	}
 
 	public class PupilLeft
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class PupilRight
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class NoseTip
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class MouthLeft
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class MouthRight
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyebrowLeftOuter
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyebrowLeftInner
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyeLeftOuter
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyeLeftTop
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyeLeftBottom
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyeLeftInner
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyebrowRightInner
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyebrowRightOuter
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyeRightInner
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyeRightTop
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyeRightBottom
-	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class EyeRightOuter
 	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class NoseRootLeft
 	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class NoseRootRight
 	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class NoseLeftAlarTop
 	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class NoseRightAlarTop
 	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class NoseLeftAlarOutTip
 	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class NoseRightAlarOutTip
 	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class UpperLipTop
 	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class UpperLipBottom
 	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class UnderLipTop
 	{
-		public double x { get; set; }
-		public double y { get; set; }
-	}
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
 
 	public class UnderLipBottom
 	{
-		public double x { get; set; }
-		public double y { get; set; }
+		public double X { get; set; }
+		public double Y { get; set; }
 	}
 
 	public class FaceLandmarks
 	{
-		public PupilLeft pupilLeft { get; set; }
-		public PupilRight pupilRight { get; set; }
-		public NoseTip noseTip { get; set; }
-		public MouthLeft mouthLeft { get; set; }
-		public MouthRight mouthRight { get; set; }
-		public EyebrowLeftOuter eyebrowLeftOuter { get; set; }
-		public EyebrowLeftInner eyebrowLeftInner { get; set; }
-		public EyeLeftOuter eyeLeftOuter { get; set; }
-		public EyeLeftTop eyeLeftTop { get; set; }
-		public EyeLeftBottom eyeLeftBottom { get; set; }
-		public EyeLeftInner eyeLeftInner { get; set; }
-		public EyebrowRightInner eyebrowRightInner { get; set; }
-		public EyebrowRightOuter eyebrowRightOuter { get; set; }
-		public EyeRightInner eyeRightInner { get; set; }
-		public EyeRightTop eyeRightTop { get; set; }
-		public EyeRightBottom eyeRightBottom { get; set; }
-		public EyeRightOuter eyeRightOuter { get; set; }
-		public NoseRootLeft noseRootLeft { get; set; }
-		public NoseRootRight noseRootRight { get; set; }
-		public NoseLeftAlarTop noseLeftAlarTop { get; set; }
-		public NoseRightAlarTop noseRightAlarTop { get; set; }
-		public NoseLeftAlarOutTip noseLeftAlarOutTip { get; set; }
-		public NoseRightAlarOutTip noseRightAlarOutTip { get; set; }
-		public UpperLipTop upperLipTop { get; set; }
-		public UpperLipBottom upperLipBottom { get; set; }
-		public UnderLipTop underLipTop { get; set; }
-		public UnderLipBottom underLipBottom { get; set; }
+		public PupilLeft PupilLeft { get; set; }
+		public PupilRight PupilRight { get; set; }
+		public NoseTip NoseTip { get; set; }
+		public MouthLeft MouthLeft { get; set; }
+		public MouthRight MouthRight { get; set; }
+		public EyebrowLeftOuter EyebrowLeftOuter { get; set; }
+		public EyebrowLeftInner EyebrowLeftInner { get; set; }
+		public EyeLeftOuter EyeLeftOuter { get; set; }
+		public EyeLeftTop EyeLeftTop { get; set; }
+		public EyeLeftBottom EyeLeftBottom { get; set; }
+		public EyeLeftInner EyeLeftInner { get; set; }
+		public EyebrowRightInner EyebrowRightInner { get; set; }
+		public EyebrowRightOuter EyebrowRightOuter { get; set; }
+		public EyeRightInner EyeRightInner { get; set; }
+		public EyeRightTop EyeRightTop { get; set; }
+		public EyeRightBottom EyeRightBottom { get; set; }
+		public EyeRightOuter EyeRightOuter { get; set; }
+		public NoseRootLeft NoseRootLeft { get; set; }
+		public NoseRootRight NoseRootRight { get; set; }
+		public NoseLeftAlarTop NoseLeftAlarTop { get; set; }
+		public NoseRightAlarTop NoseRightAlarTop { get; set; }
+		public NoseLeftAlarOutTip NoseLeftAlarOutTip { get; set; }
+		public NoseRightAlarOutTip NoseRightAlarOutTip { get; set; }
+		public UpperLipTop UpperLipTop { get; set; }
+		public UpperLipBottom UpperLipBottom { get; set; }
+		public UnderLipTop UnderLipTop { get; set; }
+		public UnderLipBottom UnderLipBottom { get; set; }
 	}
 
 	public class HeadPose
 	{
-		public double pitch { get; set; }
-		public double roll { get; set; }
-		public double yaw { get; set; }
+		public double Pitch { get; set; }
+		public double Roll { get; set; }
+		public double Yaw { get; set; }
 	}
 
 	public class FacialHair
 	{
-		public double moustache { get; set; }
-		public double beard { get; set; }
-		public double sideburns { get; set; }
+		public double Moustache { get; set; }
+		public double Beard { get; set; }
+		public double Sideburns { get; set; }
 	}
 
 	public class FaceAttributes
 	{
-		public double smile { get; set; }
-		public HeadPose headPose { get; set; }
-		public string gender { get; set; }
-		public double age { get; set; }
-		public FacialHair facialHair { get; set; }
-		public string glasses { get; set; }
-	}
+		public double Smile { get; set; }
+		public HeadPose HeadPose { get; set; }
+		public string Gender { get; set; }
+		public double Age { get; set; }
+		public FacialHair FacialHair { get; set; }
+		public string Glasses { get; set; }
+        public Emotion Emotion { get; set; }
+    }
 
-	public class Face
+    public class Face
 	{
-		public string faceId { get; set; }
-		public FaceRectangle faceRectangle { get; set; }
-		public FaceLandmarks faceLandmarks { get; set; }
-		public FaceAttributes faceAttributes { get; set; }
+		public string FaceId { get; set; }
+		public FaceRectangle FaceRectangle { get; set; }
+		public FaceLandmarks FaceLandmarks { get; set; }
+        public FaceAttributes FaceAttributes { get; set; }
 	}
 
+    public class Emotion
+    {
+        public double Anger { get; set; }
+        public double Contempt { get; set; }
+        public double Disgust { get; set; }
+        public double Fear { get; set; }
+        public double Happiness { get; set; }
+        public double Neutral { get; set; }
+        public double Sadness { get; set; }
+        public double Surprise { get; set; }
+    }
 }
 
