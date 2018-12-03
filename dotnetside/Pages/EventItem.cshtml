@@ -11,9 +11,9 @@
             <div class="col">
                 @GetMaxText(@evento.description, 250)<br/>
                 <b>@evento.place?.name - @evento.place?.location?.street - @evento.place?.location?.zip @evento.place?.location?.city</b>
-                @if (@evento.place != null)
+                @if (@evento.place != null && @evento.place.location != null)
                 {
-                    <a href="@GetMapLink()">map</a>
+                    <a href="@GetMapLink()" target="_blank">map</a>
                 }
             </div>
         </div>
@@ -33,6 +33,6 @@
 
     public string GetMapLink()
     {
-        return $"https://www.google.com/maps/@{evento.place.location.latitude},{evento.place.location.longitude}z";
+        return $"https://www.google.com/maps/search/?api=1&query={evento.place.location.latitude},{evento.place.location.longitude}"; //,15z";
     }
 }
