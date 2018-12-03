@@ -10,14 +10,15 @@
 }
 else
 {
+    <div class="container">
     @foreach (var evento in events)
     {
-        <p>
-            <h4>@evento.start_time.ToString("dd/MM/yyyy") @evento.name</h4>
-            <div>@GetMaxText(@evento.description, 250)</div>
-            <div><b>@evento.place?.name - @evento.place?.location?.street - @evento.place?.location?.zip @evento.place?.location?.city</b></div>
-        </p>
+        <EventItem evento="@evento" />
+        <div class="row">
+            <hr />
+        </div>
     }
+    </div>
 }
 
 
@@ -32,42 +33,8 @@ else
         events = eventResponse.data;
     }
 
-    public string GetMaxText(string text, int maxSize)
-    {
-        if (text.Length > maxSize)
-            return text.Substring(0, maxSize) + "...";
-        return text;
-    }
-
     class EventResponse
     {
         public Event[] data { get; set; }
-    }
-
-    class Event
-    {
-        public string description { get; set; }
-        public DateTime end_time { get; set; }
-        public string name { get; set; }
-        public Place place { get; set; }
-        public DateTime start_time { get; set; }
-        public string id { get; set; }
-    }
-
-    class Place
-    {
-        public string name { get; set; }
-        public Location location { get; set; }
-        public string id { get; set; }
-    }
-
-    class Location
-    {
-        public string city { get; set; }
-        public string country { get; set; }
-        public int latitude { get; set; }
-        public int longitude { get; set; }
-        public string street { get; set; }
-        public string zip { get; set; }
     }
 }

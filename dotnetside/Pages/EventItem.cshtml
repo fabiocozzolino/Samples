@@ -1,0 +1,38 @@
+<div id="item-box" class="row">
+    <div class="container">
+        <div class="row">
+            <h4>@evento.name</h4>
+        </div>
+        <div class="row">
+            <div class="col-">
+                <div class="text-center">@evento.start_time.ToString("dd/MM/yyyy")</div><br/>
+                <div class="text-center"><img src="images/calendar.png" width="40" height="40"/></div>
+            </div>
+            <div class="col">
+                @GetMaxText(@evento.description, 250)<br/>
+                <b>@evento.place?.name - @evento.place?.location?.street - @evento.place?.location?.zip @evento.place?.location?.city</b>
+                @if (@evento.place != null)
+                {
+                    <a href="@GetMapLink()">map</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions
+{
+    [Parameter] Event evento {get;set;}
+
+    public string GetMaxText(string text, int maxSize)
+    {
+        if (text.Length > maxSize)
+            return text.Substring(0, maxSize) + "...";
+        return text;
+    }
+
+    public string GetMapLink()
+    {
+        return $"https://www.google.com/maps/@{evento.place.location.latitude},{evento.place.location.longitude}z";
+    }
+}
