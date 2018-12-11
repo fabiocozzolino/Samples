@@ -20,8 +20,11 @@
 
     protected override void OnParametersSet()
     {
-        eventTitle = evento.name;
-        eventBody = evento.description;
-        eventInfo = $"Quando: {evento.start_time}<br/>Dove: {evento.place?.name}";
+        if (evento != null)
+        {
+            eventTitle = evento.name;
+            eventBody = evento.description;
+            eventInfo = $"Quando: {evento.start_time}<br/>Dove: {evento.place?.name}";
+        }
     }
 }
