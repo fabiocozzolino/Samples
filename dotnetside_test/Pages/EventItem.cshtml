@@ -1,18 +1,16 @@
-@using DotNetSide.Model
+@using dotnetside_test.Model
 
 <div id="item-box" class="row">
     <div class="container">
         <div class="row">
-            <h4>
-                <NavLink class="nav-link" href="@($"events/{evento.id}")">
-                    @evento.name
-                </NavLink>
-            </h4>
+            <NavLink class="nav-link" href="@($"event/{evento.id}")">
+            <h4>@evento.name</h4>
+            </NavLink>
         </div>
         <div class="row">
             <div class="col-">
                 <div class="text-center">@evento.start_time.ToString("dd/MM/yyyy")</div><br/>
-                <div class="text-center"><img src="images/calendar.png" width="40" height="40"/></div>
+                <!--div class="text-center"><img src="images/calendar.png" width="40" height="40"/></div-->
             </div>
             <div class="col">
                 @GetMaxText(@evento.description, 250)<br/>
@@ -28,7 +26,7 @@
 
 @functions
 {
-    [Parameter] Event evento {get;set;}
+    [Parameter] dotnetside_test.Model.Event evento {get;set;}
 
     public string GetMaxText(string text, int maxSize)
     {

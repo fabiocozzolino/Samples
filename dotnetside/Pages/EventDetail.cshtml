@@ -1,0 +1,27 @@
+@using DotNetSide.Model
+
+<p>
+    <h4>@eventTitle</h4>
+    <div>
+        @((MarkupString)eventInfo)
+    </div>
+    <div class="content">
+        <span style="white-space: pre-line">@eventBody</span>
+    </div>
+</p>
+
+@functions
+{
+    [Parameter] public Event evento { get; set; }
+
+    string eventTitle;
+    string eventInfo;
+    string eventBody;
+
+    protected override void OnParametersSet()
+    {
+        eventTitle = evento.name;
+        eventBody = evento.description;
+        eventInfo = $"Quando: {evento.start_time}<br/>Dove: {evento.place?.name}";
+    }
+}

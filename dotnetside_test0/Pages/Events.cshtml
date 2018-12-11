@@ -1,0 +1,36 @@
+@page "/events"
+@using System.Threading.Tasks
+@using dotnetside.Shared
+@inject EventService service
+
+<h1>DotNetSide Events</h1>
+
+@if (events == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container">
+    @foreach (var evento in events)
+    {
+        <NavLink clas="nav-link" href="@($"events/{evento.id}")">
+            <EventItem evento="@evento" />
+        </NavLink>
+        <div class="row">
+            <hr />
+        </div>
+    }
+    </div>
+}
+
+
+@functions {
+
+    dotnetside.Shared.Event[] events;
+
+    protected override async Task OnInitAsync()
+    {
+        events = await service.GetEvents();
+    }
+}

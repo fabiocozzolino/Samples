@@ -2,8 +2,12 @@ using System;
 
 namespace dotnetside.Shared
 {
+    public class EventResponse
+    {
+        public Event[] data { get; set; }
+    }
 
-    class Event
+    public class Event
     {
         public string description { get; set; }
         public DateTime end_time { get; set; }
@@ -13,14 +17,14 @@ namespace dotnetside.Shared
         public string id { get; set; }
     }
 
-    class Place
+    public class Place
     {
         public string name { get; set; }
         public Location location { get; set; }
         public string id { get; set; }
     }
 
-    class Location
+    public class Location
     {
         public string city { get; set; }
         public string country { get; set; }

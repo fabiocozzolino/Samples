@@ -1,0 +1,18 @@
+@page "/events/{eventId}"
+@using DotNetSide.Model
+@using System.Threading.Tasks
+@inject EventService service
+
+<EventDetail event="@evento" />
+
+@functions
+{
+    [Parameter] string eventId {get;set;}
+    
+    Event evento;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        evento = await service.GetEvent(eventId);
+    }
+}

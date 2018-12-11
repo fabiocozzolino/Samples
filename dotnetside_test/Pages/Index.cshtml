@@ -1,0 +1,30 @@
+﻿@page "/"
+@using dotnetside_test.Model
+@inject EventService service
+
+<h1>DotNetSide</h1>
+
+<h4>Next Meetup: "@eventTitle"</h4>
+<p>
+    <span style="white-space: pre-line">@eventDescription</span>
+</p>
+<p>
+    <NavLink class="nav-link" href="@($"event/{eventId}")">
+        CLICCA QUI PER INFO
+    </NavLink>
+</p>
+
+@functions
+{
+    string eventTitle;
+    string eventDescription;
+    string eventId;
+
+    protected override async Task OnInitAsync()
+    {
+        var nextEvent = await service.GetNextEvent();
+        eventTitle = nextEvent.name;
+        eventDescription = nextEvent.description;
+        eventId = nextEvent.id;
+    }
+}

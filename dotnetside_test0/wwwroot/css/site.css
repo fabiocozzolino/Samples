@@ -121,3 +121,10 @@ app {
         display: block;
     }
 }
+
+#item-box
+{
+    background: #F5F5F5;
+    padding: 5px;
+    border-radius: 5px;
+}

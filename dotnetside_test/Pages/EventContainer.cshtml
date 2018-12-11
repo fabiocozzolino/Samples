@@ -1,0 +1,14 @@
+@using dotnetside_test.Model
+
+<p>
+    <div><h4>@EventTitle</h4></div>
+    <div>
+        @ChildContent
+    </div>
+</p>
+
+@functions
+{
+    [Parameter] string EventTitle {get;set;}
+    [Parameter] RenderFragment ChildContent {get;set;}
+}

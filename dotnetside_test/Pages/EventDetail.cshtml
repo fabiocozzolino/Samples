@@ -1,0 +1,69 @@
+@page "/event/{eventId}"
+@using System.Threading.Tasks
+@using dotnetside_test.Model
+@inject EventService service
+
+<p>
+    <h4>@eventTitle</h4>
+    <div>
+        @((MarkupString)eventInfo)
+    </div>
+    <div class="content">
+        <span style="white-space: pre-line">@eventBody</span>
+    </div>
+</p>
+<p>
+    <div>Registrati qui</div>
+    <div><input bind="@nome"/></div>
+    <div><input bind="@cognome"/></div>
+    <div><button onclick="@registra">Registrati</button></div>
+</p>
+@if (attendees != null)
+{
+    <p>
+        <h6>Utenti registrati</h6>
+        <div>
+            @foreach (var attendee in attendees)
+            {
+                <div>@attendee.Nome @attendee.Cognome</div>
+            }
+        </div>
+    </p>
+}
+
+@functions
+{
+    [Parameter] string eventId {get;set;}
+    
+    string eventTitle;
+    string eventBody;
+    string eventInfo;
+
+    string nome;
+    string cognome;
+
+    Attendee[] attendees;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var evento = await service.GetEvent(eventId);
+
+        eventTitle = evento.name;
+        eventBody = evento.description;
+        eventInfo = $"Quando: {evento.start_time}<br/>Dove: {evento.place?.name}";
+
+        await LoadAttendees();
+    } 
+
+    async Task registra()
+    {
+        await service.AddAttendee(eventId, nome, cognome);
+        await LoadAttendees(); 
+        //StateHasChanged();
+    }
+
+    async Task LoadAttendees()
+    {
+        attendees = await service.GetEventAttendees(eventId);
+    }
+}

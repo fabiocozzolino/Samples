@@ -1,8 +1,8 @@
-using DotNetSide.Model;
 using Microsoft.AspNetCore.Blazor.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using dotnetside_test.Model;
 
-namespace DotNetSide
+namespace dotnetside_test
 {
     public class Startup
     {

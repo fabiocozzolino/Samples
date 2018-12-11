@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Blazor.Hosting;
 
-namespace DotNetSide
+namespace dotnetside
 {
     public class Program
     {

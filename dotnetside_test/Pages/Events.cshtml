@@ -1,10 +1,8 @@
 @page "/events"
-@using System.Threading.Tasks
-@using DotNetSide.Model
+@using dotnetside_test.Model
 @inject EventService service
 
-<h1>DotNetSide Events</h1>
-
+<h1>Eventi</h1>
 @if (eventi == null)
 {
     <p><em>Loading...</em></p>
@@ -24,9 +22,12 @@ else
 
 @functions
 {
-    public Event[] eventi { get; set; }
+    Event[] eventi;
+
     protected override async Task OnInitAsync()
     {
         eventi = await service.GetEvents();
     }
+
+    
 }

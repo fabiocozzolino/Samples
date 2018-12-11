@@ -1,0 +1,24 @@
+@page "/events/{eventId}"
+
+@inject EventService service
+
+<h1>@eventTitle</h1>
+
+<div>
+    @((MarkupString)eventBody)
+</div>
+
+@functions
+{
+    [Parameter] string eventId {get;set;}
+
+    string eventTitle;
+    string eventBody;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var evento = await service.GetEvent(eventId);
+        eventTitle = evento.name;
+        eventBody = evento.description;
+    }
+}

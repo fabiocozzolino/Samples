@@ -1,13 +1,9 @@
-@using DotNetSide.Model
+@using dotnetside.Shared
 
 <div id="item-box" class="row">
     <div class="container">
         <div class="row">
-            <h4>
-                <NavLink class="nav-link" href="@($"events/{evento.id}")">
-                    @evento.name
-                </NavLink>
-            </h4>
+            <h4>@evento.name</h4>
         </div>
         <div class="row">
             <div class="col-">
@@ -28,7 +24,7 @@
 
 @functions
 {
-    [Parameter] Event evento {get;set;}
+    [Parameter] dotnetside.Shared.Event evento {get;set;}
 
     public string GetMaxText(string text, int maxSize)
     {
