@@ -2,46 +2,105 @@
 @using DotNetSide.Model
 @inject EventService service
 
-<h1>DotNetSide</h1>
+<Carousel Items="@CarouselItems"/>
 
-@if (nextEvent != null)
-{
-    <EventDetail evento="@nextEvent" />
-}
+<div class="card-deck">
+<Card>
+    <CardHeader>
+        DotNetSide Newsletter
+    </CardHeader>
+    <CardBody>
+    Vuoi ricevere tutte le novità sugli eventi organizzati da DotNetSide in Puglia e Basilicata? Iscriviti alla newsletter! 
+    </CardBody>
+    <CardFooter>
+        <a href="newsletter" class="btn btn-primary">ISCRIVITI</a>
+    </CardFooter>
+</Card>
 
-<h4>DotNetSide Newsletter</h4>
-<p>
-Vuoi ricevere tutte le novità sugli eventi organizzati da DotNetSide in Puglia e Basilicata? Iscriviti alla newsletter! 
-</p>
+<Card>
+    <CardHeader>
+        Iscrizioni 2019
+    </CardHeader>
+    <CardBody>
+        DotNetSide è attiva dal 2006 con l'obiettivo di realizzare eventi tecnici, sviluppare le competenze locali e creare una fitta rete di sviluppatori ed aziende in grado di crescere e collaborare tra loro. Per sostenere le nostre attività e la community DotNetSide, diventa socio sostenitore versando la quota associativa di 30€ ed inviando copia della ricevuta attestante il pagamento all'indirizzo info@dotnetside.org.
+    </CardBody>
+    <CardFooter>
+        <a href="supportus" class="btn btn-primary">SUPPORTACI</a>
+    </CardFooter>
+</Card>
 
-<h4>Campagna Iscrizioni 2019</h4>
-<p>
-DotNetSide è attiva dal 2006 con l'obiettivo di realizzare eventi tecnici, sviluppare le competenze locali e creare una fitta rete di sviluppatori ed aziende in grado di crescere e collaborare tra loro. Per sostenere le nostre attività e la community DotNetSide, diventa socio sostenitore versando la quota associativa di 30€ ed inviando copia della ricevuta attestante il pagamento all'indirizzo info@dotnetside.org.
-Tutti i riferimenti per poter versare la quota associativa sono disponibili alla seguente pagina: http://dotnetside.org/supportus.html
-<br/>
-La tessera associativa costituisce un enorme valore per lo User Group perchè ci consente di proseguire nelle nostre attività. Senza i contributi volontari, verrebbero meno le risorse finanziare necessarie alla sopravvivenza di DotNetSide, da sempre autofinanziata. Continuare ad avere un punto di riferimento per la puglia è importante per mantenere alta l'attenzione sullo sviluppo delle nuove tecnologie, contribuendo nel contempo anche a creare una rete di professionisti che tra loro si scambiano informazioni, comunicano, si incontrano e conoscono fino ad instaurare vere e proprie amicizie, il valore aggiunto. Se avete in passato partecipato ad alcuni nostri eventi e siete tornati a casa o in ufficio carichi di novità, anche un minimo contributo può aiutarci a continuare a credere in questo progetto. 
-<br/>
-Grazie a tutti per il supporto.
-DotNetSide Staff
-</p>
+<!-- <Card>
+    <CardHeader>
+        Chi Siamo
+    </CardHeader>
+    <CardBody>
+        DotNetSide è il primo user group del sud Italia dedicato al Microsoft .NET Framework. Costituitosi ufficialmente il 22 Febbraio 2006, ha come scopo quello di riunire gli appassionati di questa tecnologia residenti nel sud Italia. 
+    </CardBody>
+    <CardFooter>
+        <a href="#whoweare" class="btn btn-primary">CHI SIAMO</a>
+    </CardFooter>
+</Card> -->
+</div>
 
-<h4>DotNetSide - Chi Siamo</h4>
-<p>
-DotNetSide è il primo user group del sud Italia dedicato al Microsoft .NET Framework. Costituitosi ufficialmente il 22 Febbraio 2006, ha come scopo quello di riunire gli appassionati di questa tecnologia residenti nel sud Italia. 
-<br/>
-Ecco perchè DotNetSide: Dot Net South Italy Developers. 
-<br/>
-DotNetSide ha come obiettivo principale l'organizzazione di eventi, meeting o semplici discussioni di carattere tecnico finalizzati alla crescita professionale dei propri iscritti partendo dalla condivisione delle esperienze.
-<br/>
-DotNetSide nasce da un gruppo di professionisti appassionati di .NET. E' aperto a chiunque voglia farne parte. DotNetSide.org è il sito ufficiale del gruppo, un aggregatore di informazioni come punto di incontro per gli iscritti.
-</p>
+<hr class="featurette-divider">
+
+<div id="whoweare" class="row featurette text-right">
+    <div class="col-md-7">
+    <h2>Chi siamo</h2>
+    <p class="lead">DotNetSide è il primo user group del sud Italia dedicato al Microsoft .NET Framework. Costituitosi ufficialmente il 22 Febbraio 2006, ha come scopo quello di riunire gli appassionati di questa tecnologia residenti nel sud Italia. <br>
+        <br>Ecco perchè DotNetSide: Dot Net South Italy Developers.
+        <br>
+        <br>DotNetSide ha come obiettivo principale l'organizzazione di eventi, meeting o semplici discussioni di carattere tecnico finalizzati alla crescita professionale dei propri iscritti partendo dalla condivisione delle esperienze.<br>
+        <br>DotNetSide nasce da un gruppo di professionisti appassionati di .NET. E' aperto a chiunque voglia farne parte. DotNetSide.org è il sito ufficiale del gruppo, un aggregatore di informazioni come punto di incontro per gli iscritti.</p>
+    </div>
+    <div class="col-md-5">
+    <img class="featurette-image img-fluid mx-auto" src="images/people-500x500.jpg" alt="DotNetSide Meetup">
+    </div>
+</div>
 
 @functions
 {
     Event nextEvent;
+    CarouselItem[] CarouselItems {get;set;}
 
     protected override async Task OnInitAsync()
     {
         nextEvent = await service.GetNextEvent();
+
+        var carouselItems = new List<CarouselItem>();
+        if (nextEvent != null)
+        {
+            carouselItems.Add(new CarouselItem
+            {
+                Title = nextEvent.name,
+                Description = nextEvent.description.GetMaxText(200),
+                LinkText = "MAGGIORI INFORMAZIONI",
+                LinkHref = "events/" + nextEvent.id
+            });
+        }
+
+        carouselItems.Add(new CarouselItem
+        {
+            Title = "Newsletter",
+            Description = "Vuoi ricevere tutte le novità sugli eventi organizzati da DotNetSide in Puglia e Basilicata? Iscriviti alla newsletter!",
+            LinkText = "Iscriviti",
+            LinkHref = "newsletter"
+        });
+        carouselItems.Add(new CarouselItem
+        {
+            Title = "Iscrizioni 2019",
+            Description = "Sostieni le attività di DotNetSide",
+            LinkText = "SUPPORTACI",
+            LinkHref = "supportus"
+        });
+        carouselItems.Add(new CarouselItem
+        {
+            Title = "Chi Siamo",
+            Description = "DotNetSide nasce da un gruppo di professionisti appassionati di .NET. E' aperto a chiunque voglia farne parte.",
+            LinkText = "CHI SIAMO",
+            LinkHref = "#whoweare"
+        });
+
+        CarouselItems = carouselItems.ToArray();
     }
 }

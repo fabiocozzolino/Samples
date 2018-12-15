@@ -1,0 +1,11 @@
+<div class="card-deck">
+    @foreach (var card in Cards)
+    {
+        @card
+    }
+</div>
+
+@functions
+{
+    [Parameter] RenderFragment[] Cards {get;set;}
+}

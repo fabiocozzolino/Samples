@@ -1,0 +1,35 @@
+<div class="card">
+    @if (CardHeader != null)
+    {
+        <div class="card-header text-left">
+            <div class="container">
+                <div class="row">
+                    <div class="col-">
+                        <img src="images/logo.png" style="width: 25px"/>
+                    </div>
+                    <div class="col text-left">
+                        <h4>@CardHeader</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="card-body text-left">
+        @CardBody
+    </div>
+
+    @if (CardFooter != null)
+    {
+        <div class="card-footer text-left">
+            @CardFooter
+        </div>
+    }
+</div>
+
+@functions
+{
+    [Parameter] RenderFragment CardHeader {get;set;}
+    [Parameter] RenderFragment CardBody {get;set;}
+    [Parameter] RenderFragment CardFooter {get;set;}
+}

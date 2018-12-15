@@ -1,0 +1,14 @@
+
+
+.main {
+    flex: 1;
+}
+
+
+.bg-dark {
+    flex: 1;
+    background-color: #800000;
+}
+
+.img-container { background-color: #000000; }
+            .img-container img { opacity: 0.5; }

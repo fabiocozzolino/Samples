@@ -33,4 +33,12 @@ namespace DotNetSide.Model
         public string street { get; set; }
         public string zip { get; set; }
     }
+
+    public class CarouselItem
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string LinkText { get; set; }
+        public string LinkHref { get; set; }
+    }
 }
