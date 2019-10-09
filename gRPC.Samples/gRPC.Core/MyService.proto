@@ -1,0 +1,13 @@
+﻿syntax = "proto3";
+
+message DoRequest {
+  string in = 1;
+}
+
+message DoResponse {
+  string out = 1;
+}
+
+service MyService {
+   rpc Do(stream DoRequest) returns (stream DoResponse) {}
+}

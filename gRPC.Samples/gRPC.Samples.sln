@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPC.Bidirectional.Client", "gRPC.Bidirectional.Client\gRPC.Bidirectional.Client.csproj", "{45BF6353-1AAF-4771-9DE1-E360A7925EFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPC.Bidirectional.Core", "gRPC.Core\gRPC.Bidirectional.Core.csproj", "{7D2F0645-2A9A-4AFF-8FE4-C5743DD16FDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45BF6353-1AAF-4771-9DE1-E360A7925EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45BF6353-1AAF-4771-9DE1-E360A7925EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45BF6353-1AAF-4771-9DE1-E360A7925EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45BF6353-1AAF-4771-9DE1-E360A7925EFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D2F0645-2A9A-4AFF-8FE4-C5743DD16FDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D2F0645-2A9A-4AFF-8FE4-C5743DD16FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D2F0645-2A9A-4AFF-8FE4-C5743DD16FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D2F0645-2A9A-4AFF-8FE4-C5743DD16FDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
