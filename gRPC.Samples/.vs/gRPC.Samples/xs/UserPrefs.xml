@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{45BF6353-1AAF-4771-9DE1-E360A7925EFC}|Default">
-  <MonoDevelop.Ide.ItemProperties.gRPC.Bidirectional.Client FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="gRPC.Core/MyService.cs">
+  <MonoDevelop.Ide.ItemProperties.gRPC.Bidirectional.Client PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="gRPC.Bidirectional.Client/Program.cs">
     <Files>
-      <File FileName="gRPC.Bidirectional.Client/Program.cs" Line="11" Column="53" />
-      <File FileName="gRPC.Bidirectional.Client/MyService.proto" Line="9" Column="2" />
-      <File FileName="gRPC.Core/gRPC.Bidirectional.Core.csproj" Line="19" Column="1" />
-      <File FileName="gRPC.Core/MyService.cs" Line="1" Column="1" />
-      <File FileName="gRPC.Core/MyServiceGrpc.cs" Line="1" Column="1" />
+      <File FileName="gRPC.Bidirectional.Client/Program.cs" Line="14" Column="29" />
+      <File FileName="gRPC.Core/gRPC.Bidirectional.Core.csproj" />
+      <File FileName="gRPC.Core/MyService.cs" Line="38" Column="125" />
+      <File FileName="gRPC.Core/MyServiceGrpc.cs" Line="17" Column="25" />
+      <File FileName="gRPC.Core/MyService.proto" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,13 +15,14 @@
             <Node name="gRPC.Bidirectional.Client" expanded="True">
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
+                <Node name="ProjectDependencies" expanded="True" />
               </Node>
+              <Node name="Program.cs" selected="True" />
             </Node>
             <Node name="gRPC.Bidirectional.Core" expanded="True">
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
-              <Node name="MyService.cs" selected="True" />
             </Node>
           </Node>
         </State>
