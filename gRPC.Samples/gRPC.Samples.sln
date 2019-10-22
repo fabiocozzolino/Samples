@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPC.Bidirectional.Client",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPC.Bidirectional.Core", "gRPC.Core\gRPC.Bidirectional.Core.csproj", "{7D2F0645-2A9A-4AFF-8FE4-C5743DD16FDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPC.Bidirectional.Server", "gRPC.Bidirectional.Server\gRPC.Bidirectional.Server.csproj", "{BEA1DA9F-498A-4452-BE7D-C511E4371883}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{7D2F0645-2A9A-4AFF-8FE4-C5743DD16FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D2F0645-2A9A-4AFF-8FE4-C5743DD16FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D2F0645-2A9A-4AFF-8FE4-C5743DD16FDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA1DA9F-498A-4452-BE7D-C511E4371883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA1DA9F-498A-4452-BE7D-C511E4371883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA1DA9F-498A-4452-BE7D-C511E4371883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA1DA9F-498A-4452-BE7D-C511E4371883}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
