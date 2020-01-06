@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "BookshelfService";
+
+package BookshelfService;
+
+// The bookshelf service definition.
+service BookService {
+  // Get full list of books
+  rpc GetAllBooks (AllBooksRequest) returns (stream AllBooksReply);
+  // Save a Book
+  rpc Save (NewBookRequest) returns (NewBookReply);
+}
+
+// The request message containing the book's title and description.
+message AllBooksRequest {
+  int32 itemsPerPage = 1;
+}
+
+// The request message containing the book's title and description.
+message AllBooksReply {
+  repeated Book Books = 1;
+}
+
+message Book {
+  string title = 1;
+  string description = 2;
+}
+
+// The request message containing the book's title and description.
+message NewBookRequest {
+  string title = 1;
+  string description = 2;
+}
+
+// The response message containing the book id.
+message NewBookReply {
+  string id = 1;
+}
