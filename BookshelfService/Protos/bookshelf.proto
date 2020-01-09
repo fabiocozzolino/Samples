@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option csharp_namespace = "BookshelfService";
-
+import "google/protobuf/any.proto";
 package BookshelfService;
 
 // The bookshelf service definition.
@@ -10,6 +10,18 @@ service BookService {
   rpc GetAllBooks (AllBooksRequest) returns (stream AllBooksReply);
   // Save a Book
   rpc Save (NewBookRequest) returns (NewBookReply);
+  //
+  rpc Send(SendRequest) returns (SendReply);
+}
+
+message SendRequest
+{
+  google.protobuf.Any Content = 1;
+}
+
+message SendReply
+{
+  google.protobuf.Any Content = 1;
 }
 
 // The request message containing the book's title and description.
