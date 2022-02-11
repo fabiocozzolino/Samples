@@ -10,7 +10,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Grpc" Version="2.24.0" />
-    <PackageReference Include="Google.Protobuf" Version="3.10.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.15.0" />
   </ItemGroup>
 <ItemGroup>
     <Protobuf Include="**/*.proto" OutputDir="%(RelativePath)" CompileOutputs="false" />
